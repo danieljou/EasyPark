@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">EasyPark</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">EasyPark</string>
+    <string name="nav_header_subtitle">danieltiomelajou@gmail.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Accueil</string>
+    <string name="menu_gallery">Carte</string>
+    <string name="menu_slideshow">Mon Compte</string>
+    <string name="slogan">Votre satisfaction c\'est notre priorité</string>
+    <string name="start">Commencer</string>
+    <string name="text_validate">Valider</string>
+    <string name="se_connecter">Se connecter</string>
+    <string name="s_inscrire">S\'inscrire</string>
+</resources>
