@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="200dp"
+    android:orientation="horizontal"
+    android:background="@drawable/bordered_3"
+    android:layout_marginVertical="12dp"
+    android:layout_marginHorizontal="5dp"
+    android:padding="12dp"
+    >
+    <ImageView
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:src="@drawable/logo"
+        />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:gravity="center"
+
+        >
+        <TextView
+            android:id="@+id/text1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Parking Hotel de ville"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="3 Places"
+            android:layout_toRightOf="@+id/text1"
+            android:layout_marginLeft="12dp"
+            />
+
+
+    </RelativeLayout>
+
+
+</LinearLayout>

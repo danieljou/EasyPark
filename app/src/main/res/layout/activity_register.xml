@@ -34,6 +34,7 @@
 
 
             <EditText
+                android:id="@+id/register_name"
                 android:labelFor="@id/imageView2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -45,7 +46,7 @@
                 />
 
             <EditText
-
+                android:id="@+id/register_surname"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:autofillHints="name"
@@ -57,7 +58,7 @@
                 />
 
             <EditText
-
+                android:id="@+id/register_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:autofillHints="emailAddress"
@@ -72,7 +73,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <EditText
-                    android:id="@+id/password"
+                    android:id="@+id/register_password"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:autofillHints="emailAddress"
@@ -87,7 +88,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/eye"
-                    android:layout_alignRight="@id/password"
+                    android:layout_alignRight="@id/register_password"
                     android:layout_marginRight="15dp"
                     android:layout_marginTop="12dp"
 
@@ -99,7 +100,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <EditText
-                    android:id="@+id/password2"
+                    android:id="@+id/register_password2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:autofillHints="emailAddress"
@@ -114,7 +115,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/eye"
-                    android:layout_alignRight="@id/password2"
+                    android:layout_alignRight="@id/register_password2"
                     android:layout_marginRight="15dp"
                     android:layout_marginTop="12dp"
 
@@ -122,6 +123,7 @@
 
             </RelativeLayout>
             <Button
+                android:id="@+id/register_btn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/rondered"

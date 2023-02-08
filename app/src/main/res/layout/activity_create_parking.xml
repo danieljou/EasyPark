@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Parking.create_parking">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/purple_200"
+        android:padding="20dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        >
+        <ImageView
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/logo"
+            android:contentDescription="@string/logo" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/cr_er_un_parking"
+            android:textColor="@color/white"
+            android:layout_marginVertical="15dp"
+            android:textSize="25dp"/>
+
+        <EditText
+            android:id="@+id/edit_parking_name"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="@drawable/input_rondered_withe"
+            android:drawableLeft="@drawable/car"
+            android:hint="@string/nom_du_parking"
+            android:inputType="text"
+            android:textSize="25dp"
+
+            />
+
+        <EditText
+            android:id="@+id/edit_parking_place"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:inputType="number"
+            android:hint="@string/nombre_de_place"
+            android:drawableLeft="@drawable/car"
+
+            android:textSize="25dp"
+            android:layout_marginVertical="10dp"
+            android:background="@drawable/input_rondered_withe"
+
+            />
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/text_validate"
+                android:background="@drawable/rondered"
+                android:padding="15dp"
+                android:layout_marginHorizontal="30dp"
+                android:layout_marginVertical="15dp"/>
+    </LinearLayout>
+
+</ScrollView>

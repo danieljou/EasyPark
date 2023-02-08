@@ -15,4 +15,12 @@
     <string name="text_validate">Valider</string>
     <string name="se_connecter">Se connecter</string>
     <string name="s_inscrire">S\'inscrire</string>
+    <string name="logo">logo</string>
+    <string name="nombre_de_place">Nombre de place</string>
+    <string name="nom_du_parking">Nom du parking</string>
+    <string name="cr_er_un_parking">Créer un parking</string>
+    <string name="acceuil">Acceuil</string>
+    <string name="profile">Profil</string>
+    <string name="Map">Carte</string>
+    <string name="creer_une_parking">Creer une parking</string>
 </resources>

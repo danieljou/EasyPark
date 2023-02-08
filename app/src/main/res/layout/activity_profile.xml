@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    android:id="@+id/profile_page"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".profile">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:background="@drawable/backgound_rondered_bottom"
+            android:padding="12dp"
+            android:gravity="center"
+            android:orientation="vertical"
+            >
+
+            <ImageView
+                android:layout_width="427dp"
+                android:layout_height="229dp"
+                android:src="@drawable/user_image"
+                />
+
+
+        </LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/rondered2"
+            android:padding="20dp"
+            android:layout_marginHorizontal="12dp"
+            android:text="Nom : Tiomela jou"
+
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/rondered2"
+            android:padding="20dp"
+            android:layout_marginHorizontal="12dp"
+            android:text="Prénom : Daniel"
+
+            />
+
+        <TextView
+            android:id="@+id/display_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/rondered2"
+            android:padding="20dp"
+            android:layout_marginHorizontal="12dp"
+            android:text=""
+
+            />
+
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rondered2"
+            android:layout_margin="25dp"
+            android:text="Modifier"
+           />
+
+    </LinearLayout>
+
+</ScrollView>

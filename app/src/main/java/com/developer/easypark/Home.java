@@ -11,8 +11,14 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 
+import com.developer.easypark.Parking.create_parking;
+import com.developer.easypark.Parking.parking_list;
+import com.developer.easypark.user.user_home;
+
+
 public class Home extends AppCompatActivity {
     Button start;
+    Button to_profile;
     ImageView voiture;
 
     @Override
@@ -20,6 +26,17 @@ public class Home extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         start = (Button) findViewById(R.id.start);
+        to_profile = (Button) findViewById(R.id.to_profile);
+
+        to_profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent next = new Intent(Home.this, profile.class);
+                startActivity(next);
+
+
+            }
+        });
         animationStart();
         start.setOnClickListener(new View.OnClickListener() {
             @Override
