@@ -18,11 +18,11 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 public class login extends AppCompatActivity {
-    Button to_register;
-    EditText email;
-    EditText password;
-    Button loginBtn;
-    private FirebaseAuth mAuth;
+    Button to_register; // to register page button
+    EditText email; // login email
+    EditText password; // login password
+    Button loginBtn; // login btn
+    private FirebaseAuth mAuth; // firebase auth for authentication
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

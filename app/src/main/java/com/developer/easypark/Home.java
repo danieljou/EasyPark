@@ -31,7 +31,7 @@ public class Home extends AppCompatActivity {
         to_profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent next = new Intent(Home.this, profile.class);
+                Intent next = new Intent(Home.this, create_parking.class);
                 startActivity(next);
 
 

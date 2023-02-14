@@ -23,4 +23,5 @@
     <string name="profile">Profil</string>
     <string name="Map">Carte</string>
     <string name="creer_une_parking">Creer une parking</string>
+    <string name="title_activity_maps">MapsActivity</string>
 </resources>
