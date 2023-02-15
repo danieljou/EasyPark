@@ -4,10 +4,18 @@ public class Parking {
 
      public String nom;
      public int nbrPlace;
+     public String id;
 
+    public String getId() {
+        return id;
+    }
 
-    public Parking( String nom, int nbrPlace) {
+    public void setId(String id) {
+        this.id = id;
+    }
 
+    public Parking(String id , String nom, int nbrPlace) {
+        this.id = id;
         this.nom = nom;
         this.nbrPlace = nbrPlace;
     }

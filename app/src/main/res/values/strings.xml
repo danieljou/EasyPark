@@ -24,4 +24,7 @@
     <string name="Map">Carte</string>
     <string name="creer_une_parking">Creer une parking</string>
     <string name="title_activity_maps">MapsActivity</string>
+    <string name="latitude">latitude</string>
+    <string name="longitude">longitude</string>
+    <string name="utiliser_mes_coordonn_es">utiliser mes coordonnées</string>
 </resources>
