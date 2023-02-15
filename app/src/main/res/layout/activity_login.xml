@@ -35,38 +35,43 @@
 
               >
 
-              <EditText
-                  android:id="@+id/email_connexion"
-                  android:layout_marginHorizontal="0.1in"
+              <com.google.android.material.textfield.TextInputLayout
                   android:layout_width="match_parent"
-                  android:layout_height="wrap_content"
-                  android:autofillHints="emailAddress"
-                  android:inputType="textEmailAddress"
-                  android:hint="Votre adresse mail"
-                  android:layout_marginTop="12dp"
-                  />
+                  app:startIconDrawable="@drawable/email"
+
+                  style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                  android:layout_height="60dp">
+                  <com.google.android.material.textfield.TextInputEditText
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:id="@+id/email_connexion"
+                      android:inputType="textEmailAddress"
+                      android:hint="Votre adresse mail"
+
+                      />
+              </com.google.android.material.textfield.TextInputLayout>
+
               <RelativeLayout
                   android:layout_width="match_parent"
                   android:layout_height="wrap_content">
-                  <EditText
-                      android:id="@+id/password_connexion"
-                      android:layout_marginHorizontal="0.1in"
-                      android:layout_width="match_parent"
-                      android:layout_height="wrap_content"
-                      android:autofillHints="emailAddress"
-                      android:inputType="textPassword"
-                      android:hint="Votre mot de passe"
-                      android:layout_marginTop="12dp"
-                      />
-                  <ImageView
-                      android:layout_width="wrap_content"
-                      android:layout_height="wrap_content"
-                      android:src="@drawable/eye"
-                      android:layout_alignRight="@id/password_connexion"
-                      android:layout_marginRight="15dp"
-                      android:layout_marginTop="12dp"
 
-                      />
+                  <com.google.android.material.textfield.TextInputLayout
+                      android:layout_width="match_parent"
+                      app:startIconDrawable="@drawable/lock"
+                      style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                      android:layout_height="60dp"
+                      app:endIconMode="password_toggle"
+                      android:layout_marginVertical="12dp"
+                      >
+                      <com.google.android.material.textfield.TextInputEditText
+                          android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:id="@+id/password_connexion"
+                          android:inputType="textPassword"
+                          android:hint="@string/latitude"
+                          android:autofillHints="latitude"
+                          />
+                  </com.google.android.material.textfield.TextInputLayout>
 
               </RelativeLayout>
 

@@ -27,4 +27,5 @@
     <string name="latitude">latitude</string>
     <string name="longitude">longitude</string>
     <string name="utiliser_mes_coordonn_es">utiliser mes coordonnées</string>
+    <string name="nom_du_parking2">Nom du parking</string>
 </resources>

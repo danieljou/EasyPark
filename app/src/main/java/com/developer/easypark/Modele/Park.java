@@ -5,9 +5,9 @@ public class Park {
     public boolean state;
     public String parkingID;
 
-    public Park(String id, boolean state, String parkingID) {
+    public Park(String id,  String parkingID) {
         this.id = id;
-        this.state = state;
+        this.state = false;
         this.parkingID = parkingID;
     }
 

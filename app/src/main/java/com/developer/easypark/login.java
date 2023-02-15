@@ -7,20 +7,20 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 public class login extends AppCompatActivity {
     Button to_register; // to register page button
-    EditText email; // login email
-    EditText password; // login password
+    TextInputEditText email; // login email
+    TextInputEditText password; // login password
     Button loginBtn; // login btn
     private FirebaseAuth mAuth; // firebase auth for authentication
 
@@ -31,8 +31,8 @@ public class login extends AppCompatActivity {
         setTitle("Connexion");
         // Initialize Firebase Auth
         mAuth = FirebaseAuth.getInstance();
-        email = (EditText) findViewById(R.id.email_connexion);
-        password = (EditText) findViewById(R.id.password_connexion);
+        email = (TextInputEditText) findViewById(R.id.email_connexion);
+        password = (TextInputEditText) findViewById(R.id.password_connexion);
         loginBtn = (Button) findViewById(R.id.login);
 
         to_register = findViewById(R.id.to_register);

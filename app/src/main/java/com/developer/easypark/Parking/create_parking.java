@@ -23,9 +23,11 @@ import android.provider.Settings;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.developer.easypark.Modele.Geopoint;
+import com.developer.easypark.Modele.Park;
 import com.developer.easypark.Modele.Parking;
 import com.developer.easypark.R;
 
@@ -39,6 +41,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 
@@ -48,12 +51,13 @@ import java.util.List;
 import java.util.Locale;
 
 public class create_parking extends AppCompatActivity {
-    EditText parkingName;
-    EditText parkingPlace;
-    EditText latitude;
-    EditText longitude;
+    TextInputEditText parkingName;
+    TextInputEditText parkingPlace;
+    TextInputEditText latitude;
+    TextInputEditText longitude;
     Button getCoords;
     Button submitBtn;
+    LinearLayout progressBackgound;
     FusedLocationProviderClient fusedLocationProviderClient;
     private final static int REQUEST_CODE = 100;
     int PERMISSION_ID = 44;
@@ -65,23 +69,24 @@ public class create_parking extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_parking);
         setTitle("Création d'un parking");
-        parkingPlace = (EditText) findViewById(R.id.edit_parking_place);
-        parkingName = (EditText) findViewById(R.id.edit_parking_name);
+        parkingPlace = (TextInputEditText) findViewById(R.id.edit_parking_place);
+        parkingName = (TextInputEditText) findViewById(R.id.edit_parking_name);
         submitBtn = (Button) findViewById(R.id.parking_add_btn);
-        latitude = (EditText) findViewById(R.id.edit_latitude);
-        longitude = (EditText) findViewById(R.id.edit_longitude);
+        latitude = (TextInputEditText) findViewById(R.id.edit_latitude);
+        longitude = (TextInputEditText) findViewById(R.id.edit_longitude);
+        progressBackgound = (LinearLayout) findViewById(R.id.progressBackgound);
         getCoords = (Button) findViewById(R.id.get_coords);
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
 
         submitBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                progressBackgound.setVisibility(View.VISIBLE);
                 parkingPlace.getText().toString();
                 if (parkingName.getText() != null) {
                     String parkID = "" + new Date().getTime();
                     int parking_place = new Integer(parkingPlace.getText().toString());
                     Parking parking = new Parking(parkID, parkingName.getText().toString(), parking_place, loc);
-                    System.out.println("Nombre de place " + parking.coords.getLat());
                     FirebaseFirestore.getInstance().collection("parking")
                             .document(parkID)
                             .set(parking)
@@ -89,19 +94,34 @@ public class create_parking extends AppCompatActivity {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
                                     Toast.makeText(getApplicationContext(), "Enregistrement effectué", Toast.LENGTH_LONG).show();
+                                    for (int i=0; i < parking.getNbrPlace(); i++){
+                                        int count = i + 1;
+                                        String id = "Park " + parking.getNom() + " - " + count;
+                                        Park park = new Park(id,parking.getId());
+                                        FirebaseFirestore.getInstance().collection("park")
+                                                .document(id)
+                                                .set(park)
+                                                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                    @Override
+                                                    public void onComplete(@NonNull Task<Void> task) {
+
+                                                    }
+                                                });
+                                    }
+                                    progressBackgound.setVisibility(View.GONE);
 
                                 }
                             }).addOnFailureListener(new OnFailureListener() {
                                 @Override
                                 public void onFailure(@NonNull Exception e) {
-
                                     Toast.makeText(getApplicationContext(), "une erreur s'est produite", Toast.LENGTH_LONG).show();
+                                    progressBackgound.setVisibility(View.GONE);
                                 }
                             }).addOnCanceledListener(new OnCanceledListener() {
                                 @Override
                                 public void onCanceled() {
                                     Toast.makeText(getApplicationContext(), "une erreur s'est produite", Toast.LENGTH_LONG).show();
-
+                                    progressBackgound.setVisibility(View.GONE);
                                 }
                             });
                 }
