@@ -64,28 +64,35 @@ public class login extends AppCompatActivity {
         }
     }
     private void signIn(String email, String password){
-        mAuth.signInWithEmailAndPassword(email, password)
-                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if(task.isSuccessful()){
-                            System.out.println(email);
-                            Intent intent = new Intent(login.this, profile.class);
-                            startActivity(intent);
-                            finish();
+        try {
+            mAuth.signInWithEmailAndPassword(email, password)
+                    .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if(task.isSuccessful()){
+                                System.out.println(email);
+                                Intent intent = new Intent(login.this, profile.class);
+                                startActivity(intent);
+                                finish();
+                            }
+
+
+
+                            else {
+                                System.out.println(" Erreur " + email);
+                            }
                         }
-
-
-
-                        else {
-                            System.out.println(" Erreur " + email);
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Toast.makeText(login.this,"Champs invalides", Toast.LENGTH_LONG).show();
                         }
-                    }
-                }).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(login.this,"Champs invalides", Toast.LENGTH_LONG).show();
-                    }
-                });
+                    });
+        }
+        catch (Exception e){
+
+            Toast.makeText(getApplicationContext(), "Verfiez vos champs ", Toast.LENGTH_LONG).show();
+        }
+
     }
 }
