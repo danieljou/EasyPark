@@ -5,6 +5,7 @@ public class Parking {
      public String nom;
      public int nbrPlace;
      public String id;
+     public Geopoint coords;
 
     public String getId() {
         return id;
@@ -14,11 +15,14 @@ public class Parking {
         this.id = id;
     }
 
-    public Parking(String id , String nom, int nbrPlace) {
-        this.id = id;
+    public Parking( String id,String nom, int nbrPlace, Geopoint coords) {
         this.nom = nom;
         this.nbrPlace = nbrPlace;
+        this.id = id;
+        this.coords = coords;
     }
+
+
 
     public String getNom() {
         return nom;

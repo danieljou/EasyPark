@@ -1,11 +1,11 @@
 package com.developer.easypark.Parking;
 
-import static android.Manifest.permission.ACCESS_FINE_LOCATION;
+
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
+
 
 import android.Manifest;
 import android.annotation.SuppressLint;
@@ -15,7 +15,7 @@ import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
-import android.location.LocationListener;
+
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.os.Looper;
@@ -25,9 +25,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.developer.easypark.Modele.Geopoint;
 import com.developer.easypark.Modele.Parking;
 import com.developer.easypark.R;
-import com.developer.easypark.login;
+
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationCallback;
 import com.google.android.gms.location.LocationResult;
@@ -36,7 +37,7 @@ import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnCanceledListener;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
+
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -57,6 +58,7 @@ public class create_parking extends AppCompatActivity {
     private final static int REQUEST_CODE = 100;
     int PERMISSION_ID = 44;
 
+    Geopoint loc;
     // client = LocationServices.getFusedLocationProviderClient(this);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,10 +80,10 @@ public class create_parking extends AppCompatActivity {
                 if (parkingName.getText() != null) {
                     String parkID = "" + new Date().getTime();
                     int parking_place = new Integer(parkingPlace.getText().toString());
-                    Parking parking = new Parking(parkID, parkingName.getText().toString(), parking_place);
-                    System.out.println("Nombre de place " + parking.getNbrPlace());
+                    Parking parking = new Parking(parkID, parkingName.getText().toString(), parking_place, loc);
+                    System.out.println("Nombre de place " + parking.coords.getLat());
                     FirebaseFirestore.getInstance().collection("parking")
-                            .document()
+                            .document(parkID)
                             .set(parking)
                             .addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
@@ -137,6 +139,7 @@ public class create_parking extends AppCompatActivity {
                                         address = geocoder.getFromLocation(location.getLatitude(), location.getLongitude(), 1);
                                         latitude.setText("" + address.get(0).getLatitude());
                                         longitude.setText("" + address.get(0).getLongitude());
+                                        loc = new Geopoint( address.get(0).getLatitude(), address.get(0).getLongitude());
                                         System.out.println(address.get(0).getLatitude());
                                     } catch (Exception e) {
                                         System.out.println(e.getMessage());
