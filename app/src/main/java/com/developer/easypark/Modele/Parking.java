@@ -1,11 +1,13 @@
 package com.developer.easypark.Modele;
 
+import com.google.android.gms.maps.model.LatLng;
+
 public class Parking {
 
      public String nom;
      public int nbrPlace;
      public String id;
-     public Geopoint coords;
+     public LatLng latLng;
 
     public String getId() {
         return id;
@@ -15,14 +17,12 @@ public class Parking {
         this.id = id;
     }
 
-    public Parking( String id,String nom, int nbrPlace, Geopoint coords) {
+    public Parking(String id, String nom, int nbrPlace, LatLng latLng) {
         this.nom = nom;
         this.nbrPlace = nbrPlace;
         this.id = id;
-        this.coords = coords;
+        this.latLng = latLng;
     }
-
-
 
     public String getNom() {
         return nom;

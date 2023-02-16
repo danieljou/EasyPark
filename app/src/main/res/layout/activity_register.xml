@@ -5,12 +5,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+
     tools:context=".register">
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/color_light_blue"
+        android:background="@color/white"
         android:scrollbarStyle="insideInset"
 
         >
@@ -33,95 +34,106 @@
                 />
 
 
-            <EditText
-                android:id="@+id/register_name"
-                android:labelFor="@id/imageView2"
+
+
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:autofillHints="name"
-                android:inputType="text"
-                android:hint="Nom"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_marginVertical="12dp"
+                app:startIconDrawable="@drawable/person"
+                app:errorIconDrawable="@drawable/warning"
+                app:errorTextColor="@color/red"
+                app:boxStrokeErrorColor="@color/red"
+                >
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/register_name"                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="nom"
+                    android:inputType="text"
 
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
 
-                />
-
-            <EditText
-                android:id="@+id/register_surname"
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:autofillHints="name"
-                android:inputType="text"
-                android:hint="Prénom"
-                android:layout_marginTop="12dp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_marginVertical="12dp"
+                app:startIconDrawable="@drawable/person"
+                app:errorIconDrawable="@drawable/warning"
+                app:errorTextColor="@color/red"
+                app:boxStrokeErrorColor="@color/red"
 
-
-                />
-
-            <EditText
-                android:id="@+id/register_email"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:autofillHints="emailAddress"
-                android:inputType="textEmailAddress"
-                android:hint="adresse mail"
-                android:layout_marginTop="12dp"
-
-
-                />
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <EditText
-                    android:id="@+id/register_password"
+                >
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/register_surname"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:autofillHints="emailAddress"
-                    android:inputType="textPassword"
-                    android:hint="Mot de passe"
-                    android:layout_marginTop="12dp"
-
-
+                    android:layout_height="match_parent"
+                    android:hint="Prénom"
 
                     />
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/eye"
-                    android:layout_alignRight="@id/register_password"
-                    android:layout_marginRight="15dp"
-                    android:layout_marginTop="12dp"
-
-                    />
-
-            </RelativeLayout>
-
-            <RelativeLayout
+            </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <EditText
+                android:layout_height="wrap_content"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_marginVertical="12dp"
+                app:startIconDrawable="@drawable/email"
+                app:errorTextColor="@color/red"
+                app:boxStrokeErrorColor="@color/red"
+                >
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/register_email"                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="@string/adresse_mail"
+
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_marginVertical="12dp"
+                app:startIconDrawable="@drawable/lock"
+                app:endIconMode="password_toggle"
+                app:errorTextColor="@color/red"
+                app:boxStrokeErrorColor="@color/red"
+                >
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/register_password"                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="mot de passe"
+                    android:inputType="textPassword"
+
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_marginVertical="12dp"
+                app:startIconDrawable="@drawable/lock"
+                app:endIconMode="password_toggle"
+                app:boxStrokeErrorColor="@color/red"
+
+                >
+                <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/register_password2"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:autofillHints="emailAddress"
+                    android:layout_height="match_parent"
+                    android:hint="confirmation du mot de passe"
                     android:inputType="textPassword"
-                    android:hint="Confirmation mot de passe"
-                    android:layout_marginTop="12dp"
-
-
-
                     />
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/eye"
-                    android:layout_alignRight="@id/register_password2"
-                    android:layout_marginRight="15dp"
-                    android:layout_marginTop="12dp"
+            </com.google.android.material.textfield.TextInputLayout>
 
-                    />
+            <com.google.android.material.divider.MaterialDivider
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
 
-            </RelativeLayout>
             <Button
                 android:id="@+id/register_btn"
                 android:layout_width="match_parent"
@@ -137,7 +149,7 @@
                 android:text="Ou"
                 android:textAlignment="center"
                 android:layout_marginTop="15dp"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:textSize="0.2in"
 
 

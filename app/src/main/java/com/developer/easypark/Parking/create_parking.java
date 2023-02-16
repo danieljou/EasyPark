@@ -22,7 +22,7 @@ import android.os.Looper;
 import android.provider.Settings;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
+
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
@@ -36,6 +36,7 @@ import com.google.android.gms.location.LocationCallback;
 import com.google.android.gms.location.LocationResult;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.tasks.OnCanceledListener;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -86,7 +87,7 @@ public class create_parking extends AppCompatActivity {
                 if (parkingName.getText() != null) {
                     String parkID = "" + new Date().getTime();
                     int parking_place = new Integer(parkingPlace.getText().toString());
-                    Parking parking = new Parking(parkID, parkingName.getText().toString(), parking_place, loc);
+                    Parking parking = new Parking(parkID, parkingName.getText().toString(), parking_place, new LatLng(loc.getLat(), loc.getLog()));
                     FirebaseFirestore.getInstance().collection("parking")
                             .document(parkID)
                             .set(parking)
