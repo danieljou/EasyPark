@@ -16,6 +16,9 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
 
 public class login extends AppCompatActivity {
     Button to_register; // to register page button
@@ -71,21 +74,27 @@ public class login extends AppCompatActivity {
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if(task.isSuccessful()){
                                 System.out.println(email);
-                                Intent intent = new Intent(login.this, profile.class);
-                                startActivity(intent);
-                                finish();
+                                FirebaseUser currentUser;
+                                currentUser = FirebaseAuth.getInstance().getCurrentUser();
+                                FirebaseFirestore.getInstance().collection("user")
+                                        .document(currentUser.getUid())
+                                        .get()
+                                        .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                                            @Override
+                                            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                                               check();
+                                            }
+                                        });
                             }
-
-
-
                             else {
+                                Toast.makeText(login.this, "Un erreur s'est produite", Toast.LENGTH_LONG).show();
                                 System.out.println(" Erreur " + email);
                             }
                         }
                     }).addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception e) {
-                            Toast.makeText(login.this,"Champs invalides", Toast.LENGTH_LONG).show();
+                            Toast.makeText(login.this, "Un erreur s'est produite", Toast.LENGTH_LONG).show();
                         }
                     });
         }
@@ -94,5 +103,38 @@ public class login extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Verfiez vos champs ", Toast.LENGTH_LONG).show();
         }
 
+    }
+
+    public  void check(){
+        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+        if (currentUser == null){
+            Intent next = new Intent(getApplicationContext(),register.class);
+            startActivity(next);
+
+            return;
+        }
+        else {
+            FirebaseFirestore.getInstance().collection("user")
+                    .document(currentUser.getUid())
+                    .get()
+                    .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                            if (task.isSuccessful()) {
+                                DocumentSnapshot user = task.getResult();
+                                String is_admin = (String) user.get("is_admin");
+                                Intent intent;
+                                assert is_admin != null;
+                                if (is_admin.equals("true")) {
+                                    intent = new Intent(getApplicationContext(), MainActivity.class);
+                                } else {
+                                    intent = new Intent(getApplicationContext(), profile.class);
+                                }
+                                startActivity(intent);
+                                finish();
+                            }
+                        }
+                    });
+        }
     }
 }

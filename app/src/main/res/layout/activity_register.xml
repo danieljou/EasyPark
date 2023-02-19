@@ -64,6 +64,9 @@
                 app:errorIconDrawable="@drawable/warning"
                 app:errorTextColor="@color/red"
                 app:boxStrokeErrorColor="@color/red"
+                app:counterEnabled="true"
+                app:counterMaxLength="15"
+
 
                 >
                 <com.google.android.material.textfield.TextInputEditText
@@ -130,6 +133,22 @@
                     />
             </com.google.android.material.textfield.TextInputLayout>
 
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                app:startIconDrawable="@drawable/phone"
+                app:prefixText="+237"
+                android:layout_marginVertical="12dp"
+                >
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/num_ro_de_t_l_phone"
+                    android:inputType="numberSigned"
+
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
             <com.google.android.material.divider.MaterialDivider
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>

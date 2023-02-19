@@ -86,7 +86,7 @@ public class create_parking extends AppCompatActivity {
                 parkingPlace.getText().toString();
                 if (parkingName.getText() != null) {
                     String parkID = "" + new Date().getTime();
-                    int parking_place = new Integer(parkingPlace.getText().toString());
+                    @SuppressLint("UseValueOf") int parking_place = new Integer(parkingPlace.getText().toString());
                     Parking parking = new Parking(parkID, parkingName.getText().toString(), parking_place, new LatLng(loc.getLat(), loc.getLog()));
                     FirebaseFirestore.getInstance().collection("parking")
                             .document(parkID)

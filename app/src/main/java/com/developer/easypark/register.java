@@ -16,6 +16,7 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 public class register extends AppCompatActivity {
@@ -30,6 +31,7 @@ public class register extends AppCompatActivity {
     private FirebaseAuth mAuth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
         setTitle("Creer votre compte");
@@ -42,6 +44,7 @@ public class register extends AppCompatActivity {
         userPassword = (TextInputEditText) findViewById(R.id.register_password);
         userPassword2 = (TextInputEditText) findViewById(R.id.register_password2);
         submit = (Button) findViewById(R.id.register_btn);
+
 
         to_login.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -137,4 +140,5 @@ public class register extends AppCompatActivity {
         }
         return state;
     }
+
 }

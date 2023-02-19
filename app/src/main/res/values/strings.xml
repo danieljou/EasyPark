@@ -5,11 +5,11 @@
     <string name="nav_header_title">EasyPark</string>
     <string name="nav_header_subtitle">danieltiomelajou@gmail.com</string>
     <string name="nav_header_desc">Navigation header</string>
-    <string name="action_settings">Settings</string>
+    <string name="action_settings">Se déconnecter</string>
 
-    <string name="menu_home">Accueil</string>
-    <string name="menu_gallery">Carte</string>
-    <string name="menu_slideshow">Mon Compte</string>
+    <string name="menu_home">Dashboard</string>
+    <string name="menu_gallery">Parking</string>
+    <string name="menu_slideshow">Utilisateurs</string>
     <string name="slogan">Votre satisfaction c\'est notre priorité</string>
     <string name="start">Commencer</string>
     <string name="text_validate">Valider</string>
@@ -29,4 +29,7 @@
     <string name="utiliser_mes_coordonn_es">utiliser mes coordonnées</string>
     <string name="nom_du_parking2">Nom du parking</string>
     <string name="adresse_mail">Adresse mail</string>
+    <string name="num_ro_de_t_l_phone">Numéro de téléphone</string>
+    <string name="utilisateurs">Utilisateurs</string>
+    <string name="parkings">parkings</string>
 </resources>
