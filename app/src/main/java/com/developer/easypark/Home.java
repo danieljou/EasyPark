@@ -25,7 +25,6 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 public class Home extends AppCompatActivity {
     Button start;
-    Button to_profile;
     ImageView voiture;
 
     @Override
@@ -33,17 +32,9 @@ public class Home extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         start = (Button) findViewById(R.id.start);
-        to_profile = (Button) findViewById(R.id.to_profile);
-
-        to_profile.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent next = new Intent(Home.this, create_parking.class);
-                startActivity(next);
 
 
-            }
-        });
+
         animationStart();
         start.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -93,10 +84,10 @@ public class Home extends AppCompatActivity {
                         public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                             if (task.isSuccessful()) {
                                 DocumentSnapshot user = task.getResult();
-                                String is_admin = (String) user.get("is_admin");
+                                Boolean is_admin = (Boolean) user.get("is_admin");
                                 Intent intent;
-                                assert is_admin != null;
-                                if (is_admin.equals("true")) {
+
+                                if (is_admin) {
                                     intent = new Intent(getApplicationContext(), MainActivity.class);
                                 } else {
                                     intent = new Intent(getApplicationContext(), profile.class);

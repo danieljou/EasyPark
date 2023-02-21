@@ -124,7 +124,7 @@ public class login extends AppCompatActivity {
                                 DocumentSnapshot user = task.getResult();
                                 String is_admin = (String) user.get("is_admin");
                                 Intent intent;
-                                assert is_admin != null;
+
                                 if (is_admin.equals("true")) {
                                     intent = new Intent(getApplicationContext(), MainActivity.class);
                                 } else {

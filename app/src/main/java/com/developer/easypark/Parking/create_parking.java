@@ -110,6 +110,7 @@ public class create_parking extends AppCompatActivity {
                                                 });
                                     }
                                     progressBackgound.setVisibility(View.GONE);
+                                    finish();
 
                                 }
                             }).addOnFailureListener(new OnFailureListener() {

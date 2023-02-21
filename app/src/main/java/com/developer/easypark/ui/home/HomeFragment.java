@@ -44,18 +44,32 @@ public class HomeFragment extends Fragment {
 
     public void getValues(){
 
-        FirebaseFirestore.getInstance().collection("users")
+        FirebaseFirestore.getInstance().collection("user")
                         .get()
                                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                                     @Override
                                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                                         if(task.isSuccessful()){
                                             QuerySnapshot documentSnapshot = task.getResult();
-                                            binding.nbparking.setText("" + documentSnapshot.size());
+                                            binding.nbparking.setText("" + documentSnapshot.getDocuments().size());
+                                            System.out.println(documentSnapshot.size());
                                         }
                                     }
                                 });
 
-        binding.nbUtilisateur.setText("defaut");
+        FirebaseFirestore.getInstance().collection("parking")
+                        .get()
+
+                                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                        if(task.isSuccessful()){
+                                            QuerySnapshot documentSnapshot = task.getResult();
+                                            binding.nbUtilisateur.setText("" + documentSnapshot.getDocuments().size());
+                                            System.out.println(documentSnapshot.size());
+                                        }
+                                    }
+                                });
+
     }
 }

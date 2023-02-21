@@ -7,6 +7,7 @@ public class User {
     String mail;
     String password;
     int telephone;
+    boolean is_admin;
 
     public User( String nom, String mail, String password) {
 
@@ -22,6 +23,7 @@ public class User {
         this.mail = mail;
         this.password = password;
         this.telephone = telephone;
+        this.is_admin = false;
     }
 
     public int getId() {

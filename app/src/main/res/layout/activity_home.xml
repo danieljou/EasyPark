@@ -49,12 +49,7 @@
                 android:textColorLink="@color/white"
                 android:padding="15dp"/>
 
-        <Button
-            android:id="@+id/to_profile"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/creer_une_parking"
-            />
+
         </LinearLayout>
 
 

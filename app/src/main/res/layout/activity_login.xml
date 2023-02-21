@@ -69,7 +69,7 @@
                           android:id="@+id/password_connexion"
                           android:inputType="textPassword"
                           android:hint="@string/latitude"
-                          android:autofillHints="latitude"
+                          android:autofillHints="password"
                           />
                   </com.google.android.material.textfield.TextInputLayout>
 
