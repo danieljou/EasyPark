@@ -10,6 +10,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 
 import com.developer.easypark.Parking.create_parking;
@@ -26,6 +27,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 public class Home extends AppCompatActivity {
     Button start;
     ImageView voiture;
+    LinearLayout loader;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,13 +35,15 @@ public class Home extends AppCompatActivity {
         setContentView(R.layout.activity_home);
         start = (Button) findViewById(R.id.start);
 
-
+        loader = (LinearLayout) findViewById(R.id.loader);
 
         animationStart();
         start.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                loader.setVisibility(View.VISIBLE);
                 check();
+
             }
         });
         if (getSupportActionBar() != null) {
@@ -71,6 +75,7 @@ public class Home extends AppCompatActivity {
         FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
         if (currentUser == null){
             Intent next = new Intent(getApplicationContext(),register.class);
+            loader.setVisibility(View.GONE);
             startActivity(next);
 
             return;
@@ -90,13 +95,15 @@ public class Home extends AppCompatActivity {
                                 if (is_admin) {
                                     intent = new Intent(getApplicationContext(), MainActivity.class);
                                 } else {
-                                    intent = new Intent(getApplicationContext(), profile.class);
+                                    intent = new Intent(getApplicationContext(), user_home.class);
                                 }
+                                loader.setVisibility(View.GONE);
                                 startActivity(intent);
                                 finish();
                             }
                         }
                     });
         }
+
     }
 }

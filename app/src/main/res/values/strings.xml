@@ -33,4 +33,6 @@
     <string name="utilisateurs">Utilisateurs</string>
     <string name="parkings">parkings</string>
     <string name="pargning_name">pargning name</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

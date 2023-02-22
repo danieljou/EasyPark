@@ -16,14 +16,14 @@ public class User {
         this.password = password;
     }
 
-    public User(String nom, String prenom, String mail, String password, int telephone) {
+    public User(String nom, String prenom, String mail, String password, int telephone, boolean is_admin) {
 
         this.nom = nom;
         this.prenom = prenom;
         this.mail = mail;
         this.password = password;
         this.telephone = telephone;
-        this.is_admin = false;
+        this.is_admin = is_admin;
     }
 
     public int getId() {

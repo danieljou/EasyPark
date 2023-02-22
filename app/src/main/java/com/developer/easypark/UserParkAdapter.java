@@ -13,15 +13,14 @@ import androidx.annotation.Nullable;
 
 import com.developer.easypark.Modele.Parking;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class ParkingItem extends BaseAdapter {
+public class UserParkAdapter extends BaseAdapter {
     private Context context;
     private List<Parking> parkings;
     private TextView tt1, tt2;
 
-    public ParkingItem(Context context, List<Parking> parkings) {
+    public UserParkAdapter(Context context, List<Parking> parkings) {
         this.context = context;
         this.parkings = parkings;
 

@@ -94,7 +94,7 @@ public class register extends AppCompatActivity {
                     // Sign in success, update UI with the signed-in user's information
                     FirebaseUser user = mAuth.getCurrentUser();
                     User mUser = new User(userName.getText().toString(),userSurname.getText().toString(),
-                            email,password,690784542);
+                            email,password,690784542, false );
                     FirebaseFirestore.getInstance().collection("user")
                                     .document(user.getUid())
                                             .set(mUser).addOnCompleteListener(new OnCompleteListener<Void>() {

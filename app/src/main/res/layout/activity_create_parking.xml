@@ -31,6 +31,20 @@
                 android:layout_height="wrap_content"
                 android:contentDescription="@string/logo"
                 android:src="@drawable/logo" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <ImageButton
+                    android:id="@+id/close"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:background="@drawable/rondered_red"
+                    android:padding="12dp"
+                    android:src="@drawable/close"
+
+
+                    />
+            </LinearLayout>
 
             <TextView
                 android:layout_width="wrap_content"

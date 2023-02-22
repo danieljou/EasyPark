@@ -23,6 +23,7 @@ import android.provider.Settings;
 import android.view.View;
 import android.widget.Button;
 
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
@@ -59,6 +60,7 @@ public class create_parking extends AppCompatActivity {
     Button getCoords;
     Button submitBtn;
     LinearLayout progressBackgound;
+    ImageButton close;
     FusedLocationProviderClient fusedLocationProviderClient;
     private final static int REQUEST_CODE = 100;
     int PERMISSION_ID = 44;
@@ -78,6 +80,13 @@ public class create_parking extends AppCompatActivity {
         progressBackgound = (LinearLayout) findViewById(R.id.progressBackgound);
         getCoords = (Button) findViewById(R.id.get_coords);
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
+        close = findViewById(R.id.close);
+        close.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+          }
+        });
 
         submitBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -86,6 +95,9 @@ public class create_parking extends AppCompatActivity {
                 parkingPlace.getText().toString();
                 if (parkingName.getText() != null) {
                     String parkID = "" + new Date().getTime();
+                    if (loc == null){
+                        loc = new Geopoint(Double.parseDouble(latitude.getText().toString()), Double.parseDouble(longitude.getText().toString()));
+                    }
                     @SuppressLint("UseValueOf") int parking_place = new Integer(parkingPlace.getText().toString());
                     Parking parking = new Parking(parkID, parkingName.getText().toString(), parking_place, new LatLng(loc.getLat(), loc.getLog()));
                     FirebaseFirestore.getInstance().collection("parking")

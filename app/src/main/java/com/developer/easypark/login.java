@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.developer.easypark.user.user_home;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
@@ -122,13 +123,13 @@ public class login extends AppCompatActivity {
                         public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                             if (task.isSuccessful()) {
                                 DocumentSnapshot user = task.getResult();
-                                String is_admin = (String) user.get("is_admin");
+                                Boolean is_admin = (Boolean) user.get("is_admin");
                                 Intent intent;
 
-                                if (is_admin.equals("true")) {
+                                if (is_admin) {
                                     intent = new Intent(getApplicationContext(), MainActivity.class);
                                 } else {
-                                    intent = new Intent(getApplicationContext(), profile.class);
+                                    intent = new Intent(getApplicationContext(), user_home.class);
                                 }
                                 startActivity(intent);
                                 finish();
