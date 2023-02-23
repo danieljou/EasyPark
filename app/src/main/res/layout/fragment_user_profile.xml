@@ -6,9 +6,25 @@
     tools:context=".user.user_home">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="USER PROFILE" />
+  <ScrollView
+      android:layout_width="match_parent"
+      android:layout_height="match_parent">
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          >
+
+          <Button
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_marginHorizontal="44dp"
+              android:background="@drawable/rondered"
+              android:layout_marginVertical="15dp"
+              android:text="@string/d_connexion"
+              android:id="@+id/user_logout"
+              />
+
+      </LinearLayout>
+  </ScrollView>
 
 </FrameLayout>

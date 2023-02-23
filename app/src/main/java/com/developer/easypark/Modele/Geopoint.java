@@ -4,6 +4,11 @@ public class Geopoint {
     double lat;
     double log;
 
+    public Geopoint() {
+        this.log = 0;
+        this.lat = 0;
+    }
+
     public Geopoint(double lat, double log) {
         this.lat = lat;
         this.log = log;
