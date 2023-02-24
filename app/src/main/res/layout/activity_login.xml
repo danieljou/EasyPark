@@ -68,7 +68,7 @@
                           android:layout_height="wrap_content"
                           android:id="@+id/password_connexion"
                           android:inputType="textPassword"
-                          android:hint="@string/latitude"
+                          android:hint="@string/mot_de_passe"
                           android:autofillHints="password"
                           />
                   </com.google.android.material.textfield.TextInputLayout>

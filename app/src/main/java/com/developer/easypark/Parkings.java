@@ -2,11 +2,25 @@ package com.developer.easypark;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
+
+import com.developer.easypark.Modele.Parking;
+import com.developer.easypark.Modele.User;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -59,6 +73,38 @@ public class Parkings extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_parkings, container, false);
+
+
+        View view = inflater.inflate(R.layout.fragment_parkings, container, false);
+        ListView parkList;
+        parkList = (ListView) view.findViewById(R.id.user_parking_list);
+
+
+        FirebaseFirestore.getInstance().collection("parking")
+                .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        List<Parking> parkings = new ArrayList<>();
+                        if(task.isSuccessful()){
+                            for(DocumentSnapshot doc: task.getResult()){
+                                LatLng latLng = new LatLng( (double) doc.get("latLng.latitude"), (double) doc.get("latLng.longitude"));
+                                Parking park = new Parking(doc.get("id").toString(), doc.get("nom").toString(),
+                                        Integer.parseInt( doc.get("nbrPlace").toString()),
+                                        latLng
+                                );
+                                System.out.println(latLng.latitude);
+                                parkings.add(park);
+                            }
+                            //if (!task.getResult().isEmpty()) {
+                            //List<Parking> querySnapshot = task.getResult().toObjects(Parking.class);
+                            UserParkAdapter customList = new UserParkAdapter(getContext(),parkings);
+                            parkList.setAdapter(customList);
+                            //}
+                        }
+                    }
+                });
+
+        return view ;
+
     }
 }

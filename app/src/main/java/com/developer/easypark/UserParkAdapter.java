@@ -2,16 +2,20 @@ package com.developer.easypark;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.developer.easypark.Modele.Parking;
+import com.developer.easypark.Modele.User;
 
 import java.util.List;
 
@@ -46,11 +50,21 @@ public class UserParkAdapter extends BaseAdapter {
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         View currentItemView = convertView;
 
-        currentItemView = LayoutInflater.from(context).inflate(R.layout.parking_adapter, parent, false);
+        currentItemView = LayoutInflater.from(context).inflate(R.layout.user_park_adapter, parent, false);
 
+        ImageButton view;
+        view = (ImageButton) currentItemView.findViewById(R.id.item_park_view);
 
-         tt1 = (TextView) currentItemView.findViewById(R.id.item_parkning_name);
-         tt2 = (TextView) currentItemView.findViewById(R.id.item_parkning_place);
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context,ParkDetails.class);
+                intent.putExtra("id",parkings.get(position).getId());
+                context.startActivity(intent);
+            }
+        });
+         tt1 = (TextView) currentItemView.findViewById(R.id.user_item_parkning_name);
+         tt2 = (TextView) currentItemView.findViewById(R.id.user_item_parkning_place);
 
 
 

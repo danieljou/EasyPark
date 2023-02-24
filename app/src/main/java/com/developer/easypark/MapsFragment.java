@@ -5,18 +5,17 @@ import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
-import androidx.fragment.app.FragmentKt;
+
 
 import android.Manifest;
 import android.annotation.SuppressLint;
-import android.app.Activity;
+
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
-import android.graphics.Color;
+
 import android.graphics.drawable.Drawable;
 import android.location.Address;
 import android.location.Geocoder;
@@ -32,7 +31,6 @@ import android.widget.Toast;
 
 import com.developer.easypark.Modele.Geopoint;
 import com.developer.easypark.Modele.Parking;
-import com.developer.easypark.Parking.create_parking;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationCallback;
 import com.google.android.gms.location.LocationRequest;
@@ -47,26 +45,26 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.android.gms.maps.model.PolylineOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
-import java.util.Objects;
 
-public class MapsFragment extends Fragment {
+
+public class MapsFragment extends Fragment  {
 
     private GoogleMap gMap;
     Geopoint loc = new Geopoint();
     FusedLocationProviderClient fusedLocationProviderClient;
-    private final static int REQUEST_CODE = 100;
     int PERMISSION_ID = 44;
-    private OnMapReadyCallback callback = new OnMapReadyCallback() {
+
+    private final OnMapReadyCallback callback = new OnMapReadyCallback() {
 
         /**
          *
@@ -99,13 +97,12 @@ public class MapsFragment extends Fragment {
 
                 googleMap.addMarker(new MarkerOptions().position(new LatLng(loc.getLat(), loc.getLog())).title("Vous"));
 
-            }
-            catch (Exception e){
+            } catch (Exception e) {
                 System.out.println("Latitude localisaton : " + loc.getLat());
                 System.out.println("Erreur sur la localisation" + e.getMessage());
             }
 
-            googleMap.moveCamera(CameraUpdateFactory.newLatLng(new LatLng(loc.getLat(),loc.getLog())));
+            googleMap.moveCamera(CameraUpdateFactory.newLatLng(new LatLng(loc.getLat(), loc.getLog())));
             googleMap.animateCamera(CameraUpdateFactory.zoomTo(11));
 
             FirebaseFirestore.getInstance().collection("parking")
@@ -146,56 +143,7 @@ public class MapsFragment extends Fragment {
                     */
 
                     List<LatLng> path = new ArrayList();
-                    GeoApiContext context = new GeoApiContext.Builder()
-                            .apiKey("YOUR_API_KEY")
-                            .build();
 
-
-
-                    DirectionsApiRequest req = DirectionsApi.getDirections(context, "41.385064,2.173403", "40.416775,-3.70379");
-                    try {
-                        DirectionsResult res = req.await();
-
-                        //Loop through legs and steps to get encoded polylines of each step
-                        if (res.routes != null && res.routes.length > 0) {
-                            DirectionsRoute route = res.routes[0];
-
-                            if (route.legs !=null) {
-                                for(int i=0; i<route.legs.length; i++) {
-                                    DirectionsLeg leg = route.legs[i];
-                                    if (leg.steps != null) {
-                                        for (int j=0; j<leg.steps.length;j++){
-                                            DirectionsStep step = leg.steps[j];
-                                            if (step.steps != null && step.steps.length >0) {
-                                                for (int k=0; k<step.steps.length;k++){
-                                                    DirectionsStep step1 = step.steps[k];
-                                                    EncodedPolyline points1 = step1.polyline;
-                                                    if (points1 != null) {
-                                                        //Decode polyline and add points to list of route coordinates
-                                                        List<com.google.maps.model.LatLng> coords1 = points1.decodePath();
-                                                        for (com.google.maps.model.LatLng coord1 : coords1) {
-                                                            path.add(new LatLng(coord1.lat, coord1.lng));
-                                                        }
-                                                    }
-                                                }
-                                            } else {
-                                                EncodedPolyline points = step.polyline;
-                                                if (points != null) {
-                                                    //Decode polyline and add points to list of route coordinates
-                                                    List<com.google.maps.model.LatLng> coords = points.decodePath();
-                                                    for (com.google.maps.model.LatLng coord : coords) {
-                                                        path.add(new LatLng(coord.lat, coord.lng));
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    } catch(Exception ex) {
-                        Log.e(TAG, ex.getLocalizedMessage());
-                    }
                     Toast.makeText(requireContext(), "Position : " + marker.getTitle(), Toast.LENGTH_LONG).show();
                     return false;
                 }

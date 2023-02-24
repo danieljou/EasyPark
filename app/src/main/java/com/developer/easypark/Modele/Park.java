@@ -11,6 +11,13 @@ public class Park {
         this.parkingID = parkingID;
     }
 
+    public Park(String id,  String parkingID, boolean state) {
+        this.id = id;
+        this.state = state;
+        this.parkingID = parkingID;
+    }
+
+
     public String getId() {
         return id;
     }
