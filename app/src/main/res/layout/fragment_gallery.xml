@@ -17,6 +17,14 @@
         android:background="@drawable/rondered"
         />
 
+    <Button
+        android:id="@+id/see"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bordered_3"
+        android:layout_marginHorizontal="15dp"
+        android:text="Voir les utilisations"
+        />
     <ListView
         android:id="@+id/lsit_parking"
         android:layout_width="match_parent"

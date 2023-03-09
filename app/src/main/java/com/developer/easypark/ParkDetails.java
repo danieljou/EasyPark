@@ -28,7 +28,6 @@ public class ParkDetails extends AppCompatActivity {
 
         Bundle b = getIntent().getExtras();
         String id = b.getString("id");
-        System.out.println(" Id passé en parametre : " + id);
         parklist = (ListView) findViewById(R.id.park_list);
 
         FirebaseFirestore.getInstance().collection("parking")

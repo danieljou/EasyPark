@@ -38,4 +38,5 @@
     <string name="d_connexion">Déconnexion</string>
     <string name="park_code">park code</string>
     <string name="mot_de_passe">mot de passe</string>
+    <string name="cliquez_pour_utiliser">Cliquez pour utiliser</string>
 </resources>

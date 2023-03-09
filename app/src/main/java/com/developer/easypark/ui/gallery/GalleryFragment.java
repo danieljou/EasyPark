@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ListView;
 
 import androidx.annotation.NonNull;
@@ -14,6 +15,7 @@ import androidx.lifecycle.ViewModelProvider;
 import com.developer.easypark.Modele.Parking;
 import com.developer.easypark.Parking.create_parking;
 import com.developer.easypark.ParkingItem;
+import com.developer.easypark.UseParkList;
 import com.developer.easypark.databinding.FragmentGalleryBinding;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -39,6 +41,7 @@ public class GalleryFragment extends Fragment {
         View root = binding.getRoot();
 
         ListView parkList = binding.lsitParking;
+        Button see = binding.see;
         FirebaseFirestore.getInstance().collection("parking")
                 .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
@@ -66,7 +69,13 @@ public class GalleryFragment extends Fragment {
 
 
 
-
+        see.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), UseParkList.class);
+                startActivity(intent);
+            }
+        });
         binding.btnCreerPark.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

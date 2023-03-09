@@ -5,7 +5,7 @@ public class Park {
     public boolean state;
     public String parkingID;
 
-    public Park(String id,  String parkingID) {
+    public Park(String id) {
         this.id = id;
         this.state = false;
         this.parkingID = parkingID;

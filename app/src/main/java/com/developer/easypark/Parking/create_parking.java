@@ -110,7 +110,7 @@ public class create_parking extends AppCompatActivity {
                                     for (int i=0; i < parking.getNbrPlace(); i++){
                                         int count = i + 1;
                                         String id = "Park " + parking.getNom() + " - " + count;
-                                        Park park = new Park(id,parking.getId());
+                                        Park park = new Park(id,parking.getId(), false);
                                         FirebaseFirestore.getInstance().collection("park")
                                                 .document(id)
                                                 .set(park)

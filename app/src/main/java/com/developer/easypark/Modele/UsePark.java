@@ -18,6 +18,10 @@ public class UsePark {
         this.dateFin = dateFin;
     }
 
+    public UsePark() {
+
+    }
+
     public String getId() {
         return id;
     }

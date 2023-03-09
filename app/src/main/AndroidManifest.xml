@@ -18,6 +18,20 @@
         android:theme="@style/Theme.EasyPark"
         tools:targetApi="31">
         <activity
+            android:name=".MapRoute"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".UseParkList"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".ParkDetails"
             android:exported="false">
             <meta-data

@@ -10,7 +10,9 @@ import androidx.fragment.app.Fragment;
 import android.Manifest;
 import android.annotation.SuppressLint;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -50,6 +52,10 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.google.maps.DirectionsApi;
+import com.google.maps.DirectionsApiRequest;
+import com.google.maps.GeoApiContext;
+import com.google.maps.model.TravelMode;
 
 
 import java.util.ArrayList;
@@ -126,6 +132,27 @@ public class MapsFragment extends Fragment  {
             gMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
                 @Override
                 public boolean onMarkerClick(@NonNull Marker marker) {
+
+                    AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+
+                    builder.setTitle("Validation");
+                    builder.setCancelable(false);
+                    builder.setMessage("Voullez vous vous rendre au parking " + marker.getTitle() + " ?");
+                    builder.setNegativeButton("Non",  (DialogInterface.OnClickListener) (dialog,which) ->{
+
+                    });
+
+                    builder.setPositiveButton("Oui",  (DialogInterface.OnClickListener) (dialog,which) ->{
+                        Intent intent = new Intent(getContext(),MapRoute.class);
+                        intent.putExtra("url",  "https://google.com/maps/dir//' " + marker.getPosition().latitude + ',' + marker.getPosition().longitude +"");
+                        startActivity(intent);
+                    });
+                    AlertDialog alertDialog = builder.create();
+                    alertDialog.show();
+
+
+                    //'https://google.com/maps/dir//' + str(self.Latitude) + ',' + str(self.Longitude)
+
 
                    /* ArrayList<LatLng> directionPoint = new ArrayList<>();
                     directionPoint.add(new LatLng(marker.getPosition().latitude, marker.getPosition().longitude));
