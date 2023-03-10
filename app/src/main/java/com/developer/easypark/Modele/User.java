@@ -26,12 +26,24 @@ public class User {
         this.is_admin = is_admin;
     }
 
+    public User() {
+
+    }
+
     public int getId() {
         return id;
     }
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public boolean isIs_admin() {
+        return is_admin;
+    }
+
+    public void setIs_admin(boolean is_admin) {
+        this.is_admin = is_admin;
     }
 
     public String getNom() {

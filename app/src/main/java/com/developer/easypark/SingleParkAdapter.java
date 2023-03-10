@@ -21,6 +21,7 @@ import androidx.annotation.Nullable;
 import com.developer.easypark.Modele.Park;
 import com.developer.easypark.Modele.Parking;
 import com.developer.easypark.Modele.UsePark;
+import com.developer.easypark.Modele.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -151,7 +152,17 @@ public class SingleParkAdapter extends BaseAdapter {
                 else{
 
                     loadDATA();
-                    if (!is_selected){
+                    User auth = new User();
+                    FirebaseFirestore.getInstance()
+                            .collection("user")
+                            .document(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                            .get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                                @Override
+                                public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                                    auth.setIs_admin((boolean) task.getResult().get("is_admin"));
+                                }
+                            });
+                    if (!is_selected && !auth.isIs_admin()){
                         Toast.makeText(context, "Vous n'este pas autorisé à agir sur ce parking", Toast.LENGTH_LONG).show();
                         return;
                     }
