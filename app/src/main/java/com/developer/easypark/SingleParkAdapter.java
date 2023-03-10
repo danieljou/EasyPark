@@ -116,6 +116,7 @@ public class SingleParkAdapter extends BaseAdapter {
                         return;
                     }*/
                     //usePark.setParkID("usepark-" + new Date().toString());
+                    loadDATA();
                     usePark.setUserID(FirebaseAuth.getInstance().getCurrentUser().getUid());
                     usePark.setDateDebut(new Date());
                     usePark.setParkID(parkings.get(position).getId());
@@ -160,10 +161,10 @@ public class SingleParkAdapter extends BaseAdapter {
                     } catch (ParseException e) {
                         e.printStackTrace();
                     }
-                    usePark.setParkID(park_id);
+                    usePark.setParkID(parkings.get(position).id);
                     usePark.setId("usepark-" + new Date().toString());
                     usePark.setDateFin(new Date());
-                    usePark.setUserID(FirebaseAuth.getInstance().getCurrentUser().getUid());
+                    usePark.setUserID(FirebaseAuth.getInstance().getCurrentUser().getUid().toString());
                     FirebaseFirestore.getInstance()
                                     .collection("usepark")
                                             .document()
@@ -219,7 +220,7 @@ public class SingleParkAdapter extends BaseAdapter {
     }
     public void loadDATA(){
         SharedPreferences sharedPreferences = context.getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE);
-        is_selected = sharedPreferences.getBoolean(IS_SELECTED, false);
+        is_selected = sharedPreferences.getBoolean(IS_SELECTED, true);
         park_id = sharedPreferences.getString(USE_PARK_ID, "");
         start_date =  sharedPreferences.getString(USE_PARK_SART, "");
 

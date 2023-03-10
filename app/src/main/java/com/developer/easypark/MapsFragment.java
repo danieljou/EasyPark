@@ -144,7 +144,7 @@ public class MapsFragment extends Fragment  {
 
                     builder.setPositiveButton("Oui",  (DialogInterface.OnClickListener) (dialog,which) ->{
                         Intent intent = new Intent(getContext(),MapRoute.class);
-                        intent.putExtra("url",  "https://google.com/maps/dir//' " + marker.getPosition().latitude + ',' + marker.getPosition().longitude +"");
+                        intent.putExtra("url",  "https://google.com/maps/dir//" + marker.getPosition().latitude + "," + marker.getPosition().longitude +"");
                         startActivity(intent);
                     });
                     AlertDialog alertDialog = builder.create();

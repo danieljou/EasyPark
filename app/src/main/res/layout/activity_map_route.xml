@@ -12,17 +12,6 @@
         android:layout_height="match_parent">
 
     </WebView>
-    <Button
-        android:id="@+id/close_map"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginHorizontal="45dp"
-        android:layout_marginVertical="25dp"
-        android:background="@drawable/rondered"
-        android:text="Retour"
-        android:textSize="35dp"
-        />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -14,6 +14,9 @@ import androidx.annotation.Nullable;
 
 import com.developer.easypark.Modele.UsePark;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 public class UseParkAdapter extends BaseAdapter {
@@ -54,9 +57,16 @@ public class UseParkAdapter extends BaseAdapter {
          tt2 = (TextView) currentItemView.findViewById(R.id.start_at);
          tt3 = (TextView) currentItemView.findViewById(R.id.finish_at);
 
-         tt1.setText(use.get(position).getUserID());
-         tt2.setText(use.get(position).getDateDebut().toString());
-         tt2.setText(use.get(position).getDateFin().toString());
+         tt1.setText(use.get(position).getParkID());
+         //tt2.setText(use.get(position).getDateDebut().toString());
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        Date dateWithoutTime = null;
+        try {
+            dateWithoutTime = sdf.parse(sdf.format(use.get(position).getDateFin()));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        tt2.setText(dateWithoutTime.toString());
 
 
         return currentItemView;

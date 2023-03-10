@@ -39,8 +39,13 @@ public class UseParkList extends AppCompatActivity {
 
                             UsePark use = new UsePark();
                             use.setId(doc.getId());
-                            use.setDateFin((Date) doc.get("dateFin"));
-                            use.setDateDebut((Date) doc.get("dateDebut"));
+                            Date dateF = doc.getDate("dateFin");
+                            Date dateD = doc.getDate("dateDebut");
+                            System.out.println(doc.getString("parkID"));
+                            use.setParkID(doc.getString("parkID"));
+
+                            use.setDateFin(dateF);
+                            use.setDateDebut(dateD);
 
                             useParks.add(use);
                         }

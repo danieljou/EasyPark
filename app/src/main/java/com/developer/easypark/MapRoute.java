@@ -31,7 +31,7 @@ public class MapRoute extends AppCompatActivity {
         WebView.getSettings().setSupportMultipleWindows(true);
         WebView.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
         WebView.setWebViewClient(new WebViewClient());
-        close_map = (Button) findViewById(R.id.close_map);
+
        /* WebView.setWebChromeClient(new WebChromeClient() {
             @Override
             public boolean onCreateWindow(WebView view, boolean dialog, boolean userGesture, Message resultMsg) {
@@ -44,12 +44,7 @@ public class MapRoute extends AppCompatActivity {
             }
         });*/
 
-        close_map.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
+
         WebView.loadUrl(url);
 
 
